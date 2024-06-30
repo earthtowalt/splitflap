@@ -16,6 +16,7 @@ words = [
 
 def _run():
     p = ask_for_serial_port()
+    print(p)
     with splitflap_context(p) as s:
         modules = s.get_num_modules()
         alphabet = s.get_alphabet()
