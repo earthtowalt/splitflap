@@ -77,6 +77,6 @@ def ticker(input):
 
 
 if __name__ == '__main__':
-    with splitflap_context('COM3') as s:
+    with splitflap_context('ttyAMA0') as s:
         app.run(host='192.168.1.68', port=5000)
 
