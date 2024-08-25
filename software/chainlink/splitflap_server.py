@@ -4,7 +4,7 @@ from flask import Flask, request
 from splitflap_proto import splitflap_context, ask_for_serial_port
 from splitflap_proto import Splitflap
 
-from API import get_quote
+# from API import get_quote
 
 import time
 
@@ -71,11 +71,11 @@ def send_splitflap_text(text):
     print('setting text: ' + sanitized)
     s.set_text(sanitized, force_movement=Splitflap.ForceMovement.ONLY_NON_BLANK)
 
-@app.route('/ticker/<input>')
-def ticker(input):
-    quote = get_quote(input)
-    send_splitflap_text(quote)
-    return 'Ticker: ' + input +', quote: ' + quote
+# @app.route('/ticker/<input>')
+# def ticker(input):
+#     quote = get_quote(input)
+#     send_splitflap_text(quote)
+#     return 'Ticker: ' + input +', quote: ' + quote
 
 
 if __name__ == '__main__':
