@@ -79,11 +79,11 @@ def ticker(input):
 
 
 if __name__ == '__main__':
-    if len(sys.argv > 1):
+    if len(sys.argv) > 1:
         port = sys.argv[1]
     else:
         port = ask_for_serial_port()
         
-    with splitflap_context(port()) as s:
+    with splitflap_context(port) as s:
         app.run(host='192.168.1.68', port=5000)
 
