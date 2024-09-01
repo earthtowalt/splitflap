@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 
 from flask import Flask, request, render_template
 from splitflap_proto import splitflap_context, ask_for_serial_port
@@ -10,7 +11,7 @@ import time
 
 app = Flask(__name__)
 
-with open('badwords.txt', 'r') as f:
+with open(Path(__file__).parent / 'badwords.txt', 'r') as f:
     bad_words = [x.strip() for x in f.readlines()]
 
 input_form = '''
@@ -31,13 +32,13 @@ def index():
     if request.method == 'POST': 
         if request.form.get('submit_button') == 'Tell me a Joke':
             print('no')
-            # send_splitflap_text('no')
+            send_splitflap_text('no')
         else:
             user_input = request.form.get('user_input')
             if user_input in bad_words:
                 mean = True
             print(user_input)
-            # send_splitflap_text(user_input)
+            send_splitflap_text(user_input)
     
     return render_template('home.html', user_input=user_input, mean=mean)
 
@@ -100,9 +101,6 @@ def send_splitflap_text(text):
 
 
 if __name__ == '__main__':
-
-    app.run(host='0.0.0.0', port=5000, debug=True)
-    sys.exit(0)
 
     if len(sys.argv) > 1:
         port = sys.argv[1]
