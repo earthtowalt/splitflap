@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .content {
+              max-width: 500px;
+              margin: auto;
+            }
+        </style>
+        <title>Splitflap Controller</title>
+    </head>
+    <body>
+        <div class="content">
+            <h1>Welcome to Jack's Splitflap controller page</h1>
+            <form method="post">
+                <div style="border-radius: 1;border-color: black;">
+                    <label for="user_input">Send Text:</label>
+                    <input type="text" id="user_input" name="user_input" autofocus>
+                    <input type="submit" name="submit_button" value="Submit">
+
+                    <input type="submit" name="submit_button" value="Tell me a Joke">
+                </div>
+            </form>
+
+            {% if user_input %}
+            <p>You last entered: "{{ user_input }}"!{% if mean %} (and that wasn't very nice!){% endif %}<p>
+            {% endif %}
+        </div>
+    </body>
+</html>
