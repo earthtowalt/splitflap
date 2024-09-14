@@ -13,10 +13,15 @@ import time
 
 NO_FLAPPY = False
 
-punishment_links = ['https://www.youtube.com/watch?v=IrF2Fut0bXw', 'https://www.istockphoto.com/photo/middle-finger-gm140472118-3415406']
+punishment_links = ['https://www.istockphoto.com/photo/middle-finger-gm140472118-3415406']
+
+with open (Path(__file__).parent / 'hamilton.txt', 'r') as f:
+    hamilton_text = f.read()
 
 easter_eggs = {
-    'jack': 'yeahhhhh... 😎'
+    'jack': '😎😎😎😎', 
+    'christ': 'Mono queen??',
+    'julia': '💃💃💃'
 }
 
 bad_actors = dict()
@@ -72,6 +77,10 @@ def index():
     
     else:
         response_text = None
+
+    # hack: if this is hamilton, render hamilton
+    if user_input in ('hammie', 'hamilt', 'hammy'):
+        return render_template('hamilton.html')
 
     return render_template('home.html', response_text=response_text, mean=mean, warn_about_behavior=warn_about_behavior)
 
